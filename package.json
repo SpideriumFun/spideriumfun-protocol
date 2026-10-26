@@ -1,0 +1,14 @@
+{
+  "name": "spiderium",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Spiderium landing site",
+  "type": "module",
+  "scripts": {
+    "prep": "python -I tools/prep-assets.py",
+    "build": "node tools/build.mjs",
+    "gates": "node tools/gates.mjs",
+    "serve": "node tools/serve.mjs"
+  },
+  "license": "MIT"
+}

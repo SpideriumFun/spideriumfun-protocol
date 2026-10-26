@@ -1,0 +1,46 @@
+/*
+  tokens.css: the only file allowed to hold colour literals.
+  Provenance: every value is a k-means centroid (k=8 over sampled pixels, or k=4 over
+  saturated lit pixels for the violet family) snapped to the nearest REAL pixel of the
+  brand assets, so each hex exists in a source file at the coordinate noted.
+  Report: tools/asset-report.json (tools/analyze.py, tools/palette.py).
+    --c-bg       brand/LOGO SPIDERIUM PNG.png          (11,0)     share 0.900
+    --c-panel    brand/LOGO SPIDERIUM PNG.png          (1667,10)  share 0.029
+    --c-line     brand/LOGO SPIDERIUM PNG.png          (1388,331) share 0.017
+    --c-line2    brand/LOGO SPIDERIUM PNG.png          (877,697)  share 0.015
+    --c-dim      brand/LOGO SPIDERIUM PNG.png          (736,519)  share 0.014
+    --c-mute     brand/LOGO SPIDERIUM PNG.png          (992,854)  share 0.012
+    --c-silk     brand/LOGO SPIDERIUM PNG.png          (1199,1106) share 0.008
+    --c-text     brand/LOGO SPIDERIUM PNG.png          (1319,735) share 0.005
+    --c-uv       reference/SPIDERIUM 1.jpg.jpeg        (96,238)   violet cluster 0.642
+    --c-uv-mid   brand/LOGO SPIDERIUM PNG...png        (998,973)  violet cluster 0.137
+    --c-uv-deep  brand/LOGO SPIDERIUM PNG...png        (955,836)  violet cluster 0.126
+    --c-uv-dim   brand/LOGO SPIDERIUM PNG...png        (1004,918) violet cluster 0.095
+    --c-uv2      brand/LOGO SPIDERIUM PNG...png        (977,1082) share 0.009
+  The transparent logo has pure black RGB under alpha 0 (3432777 px), so every resize of it
+  is premultiplied (tools/prep-assets.py).
+*/
+:root{
+  --c-bg:#03070a;--c-panel:#141621;--c-line:#2e2e41;--c-line2:#4b4961;
+  --c-dim:#686681;--c-mute:#8b87a4;--c-silk:#b0acc7;--c-text:#dfdaef;
+  --c-uv:#9c8cd5;--c-uv-mid:#846eba;--c-uv-deep:#65529b;--c-uv-dim:#45367e;--c-uv2:#c0b0d4;
+
+  --bg:var(--c-bg);
+  --panel:color-mix(in srgb,var(--c-bg) 94%,var(--c-panel));
+  --surface:color-mix(in srgb,var(--c-bg) 70%,var(--c-panel));
+  --surface2:var(--c-panel);
+  --line:color-mix(in srgb,var(--c-line) 62%,var(--c-bg));
+  --line2:var(--c-line);
+  --text:var(--c-text);--dim:var(--c-dim);--dim2:color-mix(in srgb,var(--c-dim) 70%,var(--c-bg));
+  --silk:var(--c-silk);--uv:var(--c-uv);--uv2:var(--c-uv2);
+  --up:var(--c-uv2);--down:var(--c-mute);
+
+  --mono:'DM Mono',ui-monospace,Menlo,Consolas,monospace;
+  --serif:'Fraunces',Georgia,'Times New Roman',serif;
+
+  --top:46px;--bot:32px;--lw:284px;--rw:344px;--ca:64px;
+  --r:2px;
+  --ease-out:cubic-bezier(.22,1,.36,1);
+  --t-fast:.2s;--t-mid:.35s;--t-slow:.5s;--t-load:.8s;
+  --pulse:1.2s;
+}

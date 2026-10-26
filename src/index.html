@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Spiderium</title>
+<meta name="description" content="Eight legs, one lattice. Spiderium lives on Solana, tracking high-volume tokens in real time.">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="">
+<link rel="canonical" href="https://spiderium.fun/">
+<meta property="og:title" content="Spiderium">
+<meta property="og:description" content="Eight legs, one lattice. Spiderium lives on Solana, tracking high-volume tokens in real time.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://spiderium.fun/">
+<meta property="og:image" content="https://spiderium.fun/assets/banner.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/svg+xml" sizes="32x32" href="assets/favicon.svg">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Fraunces:wght@300;400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="styles.css">
+<script>document.documentElement.classList.add('js')</script>
+</head>
+<body id="top">
+<div class="progress" id="progress" aria-hidden="true"><i></i></div>
+
+<header class="hud top">
+  <a class="brand" href="#web" aria-label="Spiderium home"><img src="assets/logo-128.png" width="30" height="30" alt="Spiderium logo"><span>Spiderium</span></a>
+  <div class="sub">EIGHT LEGS, ONE LATTICE<br><b>BUILT ON SOLANA</b></div>
+  <div class="status" id="status" data-s="loading" role="status"><i></i><span id="statusText">SYNCING</span></div>
+  <div class="sp"></div>
+  <nav class="grp nav" aria-label="Sections">
+    <a class="btn" href="#board">Board</a>
+    <a class="btn" href="#about">About</a>
+  </nav>
+  <nav class="grp social" aria-label="Social"><!--SOCIAL--></nav>
+</header>
+
+<!--CASLOT-->
+
+<main class="center" id="center">
+
+  <section class="stage" id="web" aria-label="Spiderium">
+    <div class="layer l-bg" data-depth="0.02"><img src="assets/banner.jpg" width="1500" height="500" alt=""></div>
+    <div class="layer l-mesh" data-depth="0.05" aria-hidden="true"><i></i><i></i><i></i></div>
+    <canvas class="layer l-cv" id="cv" data-depth="0.09" aria-hidden="true"></canvas>
+    <div class="layer l-logo" data-depth="0.16"><img src="assets/logo-1024.png" width="1024" height="1024" alt="Crystal spider, Spiderium emblem" fetchpriority="high"></div>
+    <div class="frame" aria-hidden="true"><i class="c1"></i><i class="c2"></i><i class="c3"></i><i class="c4"></i></div>
+    <div class="cam"><span class="pill" id="pill" data-s="loading"><i></i><span id="pillText">SYNCING</span></span></div>
+    <div class="mode">SOLANA</div>
+    <h1 class="lede rv">Pluck one <span>thread</span>; each strand <i>answers</i>.</h1>
+    <p class="scroll-hint" aria-hidden="true">SCROLL</p>
+  </section>
+
+  <section class="board" id="board" aria-labelledby="boardH">
+    <div class="sec-h rv">
+      <h2 id="boardH">Volume leaders</h2>
+      <div class="grp sort" role="group" aria-label="Sort board">
+        <button type="button" data-sort="volume" class="on" aria-pressed="true">Volume</button>
+        <button type="button" data-sort="change" aria-pressed="false">Change</button>
+        <button type="button" data-sort="liquidity" aria-pressed="false">Depth</button>
+      </div>
+    </div>
+    <div class="thead rv" aria-hidden="true"><span>#</span><span>Token</span><span>Price</span><span>24h</span><span>Volume</span><span>Depth</span><span></span></div>
+    <div class="rows-board" id="rowsBoard" aria-live="off"></div>
+    <p class="board-note" id="boardNote" role="status"></p>
+  </section>
+
+  <section class="about" id="about" aria-labelledby="aboutH">
+    <div class="sec-h rv"><h2 id="aboutH">Field notes</h2></div>
+    <div class="facts">
+      <article class="fact spot rv"><b>Silk</b><h3>Shared infrastructure</h3><p>One lattice carries every message. Nothing hangs solo; no strand moves untouched by neighbours.</p></article>
+      <article class="fact spot rv"><b>Signal</b><h3>Tension tells the truth</h3><p>Pluck the rim, hub trembles. This board reads markets identically: poll once, every row shifts together.</p></article>
+      <article class="fact spot rv"><b>Colony</b><h3>Strength from many hands</h3><p>Lone hunters stay modest. Crowds reacting together land prey far beyond individual reach.</p></article>
+      <article class="fact spot rv"><b>Record</b><h3>One fact, one record</h3><p>Each outside claim occupies exactly one entry: stated, absent or unconfirmed. Entries lacking proof stay quiet, reading pending.</p></article>
+      <article class="fact wide spot rv"><b>Batch</b><h3>Scope</h3><p>Claims hold at batch level. Supply any missing detail; its slot wakes during rebuild, nothing else moves.</p></article>
+    </div>
+    <div class="sec-h rv"><h2>Page behaviour</h2></div>
+    <table class="what rv" id="whatTable"><tbody></tbody></table>
+  </section>
+
+</main>
+
+<aside class="hud left" aria-label="Panels">
+  <section class="pnl rv">
+    <div class="ph">01 Register <span>ONE FACT EACH</span></div>
+    <div class="rows" id="regRows">
+        <!--REGROWS-->
+    </div>
+  </section>
+  <section class="pnl rv">
+    <div class="ph">02 Pulse <span id="pulseSrc">ON CHAIN</span></div>
+    <div class="kv">
+      <div class="spot">Listed<b id="kList">&mdash;</b></div>
+      <div class="spot">Risers<b id="kUp">&mdash;</b></div>
+      <div class="spot">Volume<b id="kVol">&mdash;</b></div>
+      <div class="spot">Depth<b id="kLiq">&mdash;</b></div>
+    </div>
+    <div class="bars" id="shareBars"></div>
+  </section>
+  <section class="pnl rv">
+    <div class="ph">03 Feed <span id="feedTag">&mdash;</span></div>
+    <div class="rows">
+      <div class="row">Source<b>DexScreener</b></div>
+      <div class="row">Cadence<b>1 min</b></div>
+      <div class="row">Status<b id="feedStatus">&mdash;</b></div>
+      <div class="row">Retries<b id="feedRetry">0</b></div>
+    </div>
+  </section>
+  <section class="pnl rv">
+    <div class="ph">04 Biggest swings <span>FIVE</span></div>
+    <div class="list" id="swings"><div class="empty">Awaiting reading.</div></div>
+  </section>
+</aside>
+
+<aside class="hud right" aria-label="Detail">
+  <section class="pnl spec rv" id="spec">
+    <div class="ph">05 Focus <span id="focusTag">NONE PICKED</span></div>
+    <div id="focusBody"><div class="empty">Choose a row for details.</div></div>
+  </section>
+  <section class="pnl logp rv">
+    <div class="ph">06 Journal <span id="logN">NO NOTES</span></div>
+    <div id="log"></div>
+  </section>
+</aside>
+
+<footer class="hud bot" aria-label="Live ticker">
+  <div class="tag">TICKER</div>
+  <div class="ticker" id="ticker"><div class="track" id="track"><span class="tk">&mdash; &mdash; &mdash;</span></div></div>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"><b></b><span></span></div>
+
+<script type="application/json" id="register">__REGISTER__</script>
+<script type="module" src="js/app.js"></script>
+<noscript><style>.rv{opacity:1!important}</style></noscript>
+</body>
+</html>
